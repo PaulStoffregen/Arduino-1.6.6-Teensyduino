@@ -1763,13 +1763,12 @@ public class Base {
                 RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
 
         g.setFont(new Font("SansSerif", Font.PLAIN, 11));
-        g.setColor(Color.white);
-        g.drawString(BaseNoGui.VERSION_NAME_LONG, 33, 20);
+        g.setColor(Color.black);
+        g.drawString("Arduino " + BaseNoGui.VERSION_NAME_LONG, 28, 16);
         if (BaseNoGui.teensyduino_version != null) {
           FontMetrics m = g.getFontMetrics(g.getFont());
-          g.drawString("Teensyduino", 285 - m.stringWidth("Teensyduino") / 2, 30);
-          g.drawString(BaseNoGui.teensyduino_version,
-            285 - m.stringWidth(BaseNoGui.teensyduino_version) / 2, 46);
+          String td = "Teensyduino " + BaseNoGui.teensyduino_version;
+          g.drawString(td, 448 - m.stringWidth(td), 16);
         }
       }
     };
