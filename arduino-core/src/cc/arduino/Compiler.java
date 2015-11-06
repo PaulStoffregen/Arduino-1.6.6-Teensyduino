@@ -40,6 +40,7 @@ import processing.app.debug.*;
 import processing.app.helpers.PreferencesMap;
 import processing.app.helpers.PreferencesMapException;
 import processing.app.helpers.StringReplacer;
+import processing.app.helpers.OSUtils;
 import processing.app.legacy.PApplet;
 import processing.app.tools.DoubleQuotedArgumentsOnWindowsCommandLine;
 
@@ -246,6 +247,9 @@ public class Compiler implements MessageConsumer {
 
     DefaultExecutor executor = new DefaultExecutor();
     executor.setStreamHandler(streamHandler);
+    if (BaseNoGui.isTeensyduino() && OSUtils.isMacOS()) {
+      executor.setWorkingDirectory(new File("/tmp"));
+    }
 
     int result;
     executor.setExitValues(null);
